@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+<title>2D Sierpinski Carpet - 분할 횟수 / 색상 제어</title>
+
+<script id="vertex-shader" type="x-shader/x-vertex">
+attribute vec4 vPosition;
+
+void
+main()
+{
+    gl_Position = vPosition;
+}
+</script>
+
+<script id="fragment-shader" type="x-shader/x-fragment">
+precision mediump float;
+uniform vec4 uColor;
+
+void
+main()
+{
+    gl_FragColor = uColor;
+}
+</script>
+
+<script type="text/javascript" src="Common/webgl-utils.js"></script>
+<script type="text/javascript" src="Common/initShaders.js"></script>
+<script type="text/javascript" src="Common/MV.js"></script>
+<script type="text/javascript" src="carpet.js"></script>
+
+<style>
+    body { font-family: sans-serif; }
+    #controls { margin-top: 10px; line-height: 2; }
+</style>
+</head>
+
+<body>
+<canvas id="gl-canvas" width="512" height="512">
+Oops ... your browser doesn't support the HTML5 canvas element
+</canvas>
+
+<div id="controls">
+    <div>
+        분할 횟수:
+        <input id="subdivSlider" type="range" min="0" max="6" step="1" value="3">
+        <span id="subdivValue">3</span>
+        (사각형 <span id="triCount"></span>개)
+    </div>
+
+    <div>
+        색상:
+        <select id="colorMode">
+            <option value="red" selected>빨강</option>
+            <option value="green">초록</option>
+            <option value="blue">파랑</option>
+        </select>
+    </div>
+</div>
+</body>
+</html>
